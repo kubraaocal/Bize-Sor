@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e9ecef"
+    android:orientation="vertical"
+    tools:context=".ProfilDuzenleActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/cardview_light_background"
+        android:orientation="horizontal"
+        android:padding="25dp"
+        android:gravity="center">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/activity_profil_duzenle_circle_image"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/profile"
+            app:civ_border_color="#FFFFFF"
+            app:civ_border_width="2dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/cardview_light_background"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:padding="15dp"
+        android:textAlignment="center">
+
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:text="Hakkımda"
+            android:layout_marginRight="5dp"/>
+
+        <EditText
+            android:id="@+id/activity_profil_duzenle_edit_hakkimda"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/cardview_light_background"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:padding="15dp"
+        android:textAlignment="center">
+
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:text="İsim" />
+
+        <EditText
+            android:id="@+id/activity_profil_duzenle_edit_isim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/cardview_light_background"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:padding="15dp"
+        android:textAlignment="center">
+
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:text="Soyisim"
+            android:layout_marginRight="5dp"/>
+
+        <EditText
+            android:id="@+id/activity_profil_duzenle_edit_soyisim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:padding="15dp">
+        <Button
+            android:id="@+id/activity_profil_duzenle_btn_kaydet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kaydet"
+            android:background="@drawable/button_stil"/>
+    </LinearLayout>
+
+
+</LinearLayout>

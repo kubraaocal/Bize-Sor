@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "152544526610",
+    "firebase_url": "https://bizesor-78254.firebaseio.com",
+    "project_id": "bizesor-78254",
+    "storage_bucket": "bizesor-78254.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:152544526610:android:bfe5078d321ecba0d673cb",
+        "android_client_info": {
+          "package_name": "com.example.bizesor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "152544526610-90bgbo79glgc86detic8rldnj832d59f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5iJ2k69QOs2wLqTcjzfoUCupOlMxaxvc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "152544526610-90bgbo79glgc86detic8rldnj832d59f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
