@@ -11,6 +11,7 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -34,8 +35,15 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
     testImplementation 'junit:junit:4.12'
 
+    implementation 'com.firebaseui:firebase-ui-database:6.0.2'
+    implementation 'com.android.support:multidex:1.0.3'
+
     api 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
     implementation 'com.squareup.picasso:picasso:2.5.2'
+
+    //google ile giriş
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
+   // implementation platform('com.google.firebase:firebase-bom:26.2.0')
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
@@ -46,7 +54,9 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.2.0-rc03'
     //Yuvarlak resim görüntüsü
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+    //Sayısal button
+    implementation 'com.cepheuen.elegant-number-button:lib:1.0.2'
 
-
+    implementation 'id.zelory:compressor:1.0.4'
 
 }

@@ -1,9 +1,9 @@
-package com.example.bizesor;
+package com.example.bizesor.Modeller;
 
-public class SinavItem {
+public class ModelSinav {
     private String sinavIsmi;
 
-    public SinavItem(String sinavIsmi){
+    public ModelSinav(String sinavIsmi){
         this.sinavIsmi=sinavIsmi;
     }
     public String getSinavIsmi(){

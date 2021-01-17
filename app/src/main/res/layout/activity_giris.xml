@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:paddingLeft="15dp"
     android:paddingRight="15dp"
-    tools:context=".GirisActivity">
+    tools:context=".Activityler.GirisActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -67,7 +67,8 @@
             android:id="@+id/spinner_girisSinav"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="10dp"
+            android:spinnerMode="dialog"/>
     </LinearLayout>
 
     <LinearLayout
@@ -105,12 +106,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="65dp"
         android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/btn_facebook_giris"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/facebook" />
 
         <ImageView
             android:id="@+id/btn_google_giris"

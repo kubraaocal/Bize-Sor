@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="3dp"
+    app:cardElevation="3dp"
+    app:contentPadding="5dp"
+    app:cardUseCompatPadding="true"
+    android:background="@color/white">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/paylasim_profil_resim"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/profile"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginBottom="4dp"/>
+            
+            <LinearLayout
+                android:id="@+id/kullanici_profil_link"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1">
+                
+                <TextView
+                    android:id="@+id/paylasim_kullanici_adi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="kullanıcı adı"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_gravity="start" />
+
+                <TextView
+                    android:id="@+id/paylasim_saat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="zaman"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
+            
+            <ImageButton
+                android:id="@+id/paylasim_more_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_more_horiz_24"
+                android:visibility="invisible"
+                android:background="@null"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/paylasim_link">
+        <TextView
+            android:id="@+id/paylasim_ders"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="Ders Konu"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+        
+        <TextView
+            android:id="@+id/paylasim_yazi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="gönderi için yazılan yazı"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_margin="10dp"
+            android:textSize="16sp"
+            android:textColor="@color/black"/>
+        <ImageView
+            android:id="@+id/paylasim_resim"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_margin="3dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#F5F0F0"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="left">
+            <TextView
+                android:id="@+id/paylasim_puan_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="puan"
+                android:layout_weight="1"
+                android:textColor="@color/colorPrimary"/>
+            <TextView
+                android:id="@+id/paylasim_yorum_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="yorum"
+                android:layout_weight="1"
+                android:textColor="@color/colorPrimary"/>
+            
+            <Button
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:id="@+id/paylasim_like_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Beğen"
+                android:drawableLeft="@drawable/ic_baseline_thumb_up_alt_24"
+                android:drawableStart="@drawable/ic_baseline_thumb_up_alt_24"
+                android:background="@null"/>
+            <Button
+                android:id="@+id/paylasim_yorum_yap"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:text="Yorum yap"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:drawableStart="@drawable/ic_baseline_comment_24"
+                android:drawableLeft="@drawable/ic_baseline_comment_24"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

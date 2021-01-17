@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "152544526610-do7kufhatnhbjtvar2v3oq5hd601a318.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bizesor",
+            "certificate_hash": "47a4676ae5eb25c7d3a74b9b8a0b7e8ba98448b0"
+          }
+        },
+        {
           "client_id": "152544526610-90bgbo79glgc86detic8rldnj832d59f.apps.googleusercontent.com",
           "client_type": 3
         }

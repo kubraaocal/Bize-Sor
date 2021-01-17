@@ -8,7 +8,8 @@
         android:layout_height="wrap_content"
         android:text="Lütfen Seçiniz"
         android:layout_marginLeft="5dp"
-        android:layout_marginBottom="10dp"
-        android:textSize="20dp"/>
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:textSize="16dp"/>
 
 </RelativeLayout>

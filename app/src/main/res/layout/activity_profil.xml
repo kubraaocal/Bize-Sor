@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activityler.ProfilActivity"
+    android:background="@color/lightGrey">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="wrap_content">
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                tools:context=".Activityler.ProfilActivity"
+                android:background="@color/lightGrey">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@color/white">
+
+                    <include
+                        android:id="@+id/profil_activity_toolbar"
+                        layout="@layout/app_toolbar">
+
+                    </include>
+                    <ImageView
+                        android:id="@+id/profil_activity_profil_ayar"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="-37dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_gravity="center|right"
+                        android:background="@drawable/ic_baseline_settings_24">
+
+                    </ImageView>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="2dp"
+                    android:padding="15dp"
+                    android:background="@color/white">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/profil_activity_profil_resmi"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/profile"
+                        android:background="@color/white"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:layout_margin="20dp"
+                        android:background="@color/white">
+                        <TextView
+                            android:id="@+id/profil_activity_kullanici_adi"
+                            android:layout_width="wrap_content"
+                            android:text="Kullanıcı adı"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            android:layout_height="wrap_content"
+                            android:textSize="20sp"/>
+                        <TextView
+                            android:id="@+id/profil_activity_kullanici_hakkimda"
+                            android:layout_width="wrap_content"
+                            android:text="Hakkımda"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@color/white"
+                    android:padding="20dp">
+                    <TextView
+                        android:id="@+id/profil_text_soru_sayisi"
+                        android:layout_width="wrap_content"
+                        android:text="Soru"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
+                    <TextView
+                        android:id="@+id/profil_text_puan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Puan"
+                        android:layout_weight="1"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <com.google.android.material.tabs.TabLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:tabMode="fixed"
+                        app:tabGravity="fill"
+                        android:background="@color/white"
+                        android:id="@+id/profil_activity_tablayout">
+                    </com.google.android.material.tabs.TabLayout>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+    <androidx.viewpager.widget.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/viewpager"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

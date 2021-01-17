@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,7 +10,7 @@
     android:paddingTop="50dp"
     android:paddingRight="15dp"
     android:gravity="center"
-    tools:context=".KayitOlActivity">
+    tools:context=".Activityler.KayitOlActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,26 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="İsim*" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_person_outline_24" />
-
-        <EditText
-            android:id="@+id/activity_kayit_ol_edit_soyisim"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Soyisim*" />
+            android:hint="İsim Soyisim*" />
     </LinearLayout>
 
     <LinearLayout
@@ -107,7 +88,8 @@
             android:id="@+id/activity_kayit_ol_spinner_sinav"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="10dp"
+            android:spinnerMode="dialog"/>
     </LinearLayout>
 
     <LinearLayout

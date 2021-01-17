@@ -1,4 +1,4 @@
-package com.example.bizesor;
+package com.example.bizesor.Activityler;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.bizesor.R;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -30,16 +31,18 @@ import com.google.firebase.storage.StorageTask;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
+import java.io.File;
 import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import id.zelory.compressor.Compressor;
 
 public class ProfilDuzenleActivity extends AppCompatActivity {
-    private EditText editProfilDuzenleIsim, editProfilDuzenleSoyisim, editProfilDuzenleHakkimda;
+
+    private EditText editProfilDuzenleHakkimda;
     private Button btnProfilDuzenleKaydet;
     private CircleImageView profilResim;
 
-    final static int galeri_sec = 1;
 
     private FirebaseAuth mAuth;
     private DatabaseReference kullaniciReferans;
@@ -50,6 +53,7 @@ public class ProfilDuzenleActivity extends AppCompatActivity {
     private String uri = "";
 
     private String kullaniciID;
+    private String resim;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,66 +67,46 @@ public class ProfilDuzenleActivity extends AppCompatActivity {
 
 
         editProfilDuzenleHakkimda = findViewById(R.id.activity_profil_duzenle_edit_hakkimda);
-        editProfilDuzenleIsim = findViewById(R.id.activity_profil_duzenle_edit_isim);
-        editProfilDuzenleSoyisim = findViewById(R.id.activity_profil_duzenle_edit_soyisim);
+        //editProfilDuzenleIsim = findViewById(R.id.activity_profil_duzenle_edit_isim);
         btnProfilDuzenleKaydet = findViewById(R.id.activity_profil_duzenle_btn_kaydet);
         profilResim = findViewById(R.id.activity_profil_duzenle_circle_image);
 
-        btnProfilDuzenleKaydet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                yukleProfilResim();
-                ProfilDuzenleVerileriKaydet();
-            }
-        });
 
         profilResim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 CropImage.activity().setAspectRatio(1, 1).start(ProfilDuzenleActivity.this);
-
-                /*Intent galeriIntent = new Intent();
-                galeriIntent.setAction(Intent.ACTION_GET_CONTENT);
-                galeriIntent.setType("image/*");
-                startActivityForResult(galeriIntent, galeri_sec);*/
             }
         });
-
+        //googleIleGiris();
         getKullaniciInfo();
-    }
 
-    private void ProfilDuzenleVerileriKaydet() {
-        final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-        alertDialog.setTitle("Yükleniyor");
-        alertDialog.setMessage("Lütfen biraz bekleyin..");
-        alertDialog.show();
-
-        String kullaniciIsim=editProfilDuzenleIsim.getText().toString();
-        String kullaniciSoyisim=editProfilDuzenleSoyisim.getText().toString();
-        String kullaniciHakkimda=editProfilDuzenleHakkimda.getText().toString();
-
-        if(TextUtils.isEmpty(kullaniciIsim)||TextUtils.isEmpty(kullaniciSoyisim)||TextUtils.isEmpty(kullaniciHakkimda)){
-            Toast.makeText(this,"Lütfen boş alan bırakmayınız",Toast.LENGTH_LONG).show();
-        }
-        else {
-            HashMap kullaniciMap=new HashMap();
-            kullaniciMap.put("isim",kullaniciIsim);
-            kullaniciMap.put("soyisim",kullaniciSoyisim);
-            kullaniciMap.put("hakkimda",kullaniciHakkimda);
-            kullaniciReferans.updateChildren(kullaniciMap).addOnCompleteListener(new OnCompleteListener() {
-                @Override
-                public void onComplete(@NonNull Task task) {
-                    if(task.isSuccessful()){
-                        alertDialog.dismiss();
-                    }
-                    else{
-                        Toast.makeText(ProfilDuzenleActivity.this,"Kayıt edilemedi",Toast.LENGTH_LONG).show();
-                    }
+        btnProfilDuzenleKaydet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!resim.equals("null") || resimUri != null) {
+                    yukleProfilResim();
+                } else {
+                    Toast.makeText(ProfilDuzenleActivity.this, "Lütfen resim yükleyiniz..", Toast.LENGTH_LONG).show();
                 }
-            });
-        }
 
+            }
+        });
     }
+
+    private void MainActivityGit() {
+        Intent mainActivityGit = new Intent(ProfilDuzenleActivity.this, MainActivity.class);
+        mainActivityGit.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(mainActivityGit);
+        finish();
+    }
+
+    /*private void googleIleGiris() {
+        GoogleSignInAccount googleSignInAccount=GoogleSignIn.getLastSignedInAccount(this);
+        if(googleSignInAccount!=null){
+            editProfilDuzenleIsim.setText(googleSignInAccount.getDisplayName());
+        }
+    }*/
 
     private void getKullaniciInfo() {
         kullaniciReferans.addValueEventListener(new ValueEventListener() {
@@ -130,16 +114,12 @@ public class ProfilDuzenleActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists() && snapshot.getChildrenCount() > 0) {
                     if (snapshot.hasChild("resim")) {
-                        String resim = snapshot.child("resim").getValue().toString();
-                        Picasso.with(ProfilDuzenleActivity.this).load(resim).into(profilResim);
-                        Log.i("aaa","Burası ilk açılınca");
+                        resim = snapshot.child("resim").getValue().toString();
+                        Picasso.with(ProfilDuzenleActivity.this).load(resim).placeholder(R.drawable.profile).into(profilResim);
                     }
-                    if(snapshot.hasChild("isim")&&snapshot.hasChild("soyisim")&&snapshot.hasChild("hakkimda")){
-                        String isim=snapshot.child("isim").getValue().toString();
-                        String soyisim=snapshot.child("soyisim").getValue().toString();
-                        String hakkimda=snapshot.child("hakkimda").getValue().toString();
-                        editProfilDuzenleIsim.setText(isim);
-                        editProfilDuzenleSoyisim.setText(soyisim);
+                    if (snapshot.hasChild("hakkimda")) {
+                        String isim = snapshot.child("isim").getValue().toString();
+                        String hakkimda = snapshot.child("hakkimda").getValue().toString();
                         editProfilDuzenleHakkimda.setText(hakkimda);
                     }
                 }
@@ -158,7 +138,11 @@ public class ProfilDuzenleActivity extends AppCompatActivity {
 
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            resimUri = result.getUri();
+            File file = new File(result.getUri().getPath());
+
+            File compressedImageFile = Compressor.getDefault(this).compressToFile(file);
+
+            resimUri = Uri.fromFile(compressedImageFile);
 
             profilResim.setImageURI(resimUri);
 
@@ -168,14 +152,30 @@ public class ProfilDuzenleActivity extends AppCompatActivity {
     }
 
     private void yukleProfilResim() {
-       // Log.i("a1", "Metod çalıştı");
         final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         alertDialog.setTitle("Yükleniyor");
         alertDialog.setMessage("Lütfen biraz bekleyin..");
         alertDialog.show();
 
+        String kullaniciHakkimda = editProfilDuzenleHakkimda.getText().toString();
+
+        if (TextUtils.isEmpty(kullaniciHakkimda)) {
+            Toast.makeText(this, "Lütfen boş alan bırakmayınız", Toast.LENGTH_LONG).show();
+        } else {
+            HashMap kullaniciMap = new HashMap();
+            kullaniciMap.put("hakkimda", kullaniciHakkimda);
+            kullaniciReferans.updateChildren(kullaniciMap).addOnCompleteListener(new OnCompleteListener() {
+                @Override
+                public void onComplete(@NonNull Task task) {
+                    if (task.isSuccessful()) {
+                        //alertDialog.dismiss();
+                    } else {
+                        Toast.makeText(ProfilDuzenleActivity.this, "Kayıt edilemedi", Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
+        }
         if (resimUri != null) {
-            //Log.i("a11", "ife girdi");
             final StorageReference dosyaRef = kullaniciProfilResimReferans.child(kullaniciID + ". jpg");
 
             uploadTask = dosyaRef.putFile(resimUri);
@@ -185,26 +185,25 @@ public class ProfilDuzenleActivity extends AppCompatActivity {
                 public Object then(@NonNull Task task) throws Exception {
                     if (!task.isSuccessful()) {
                         throw task.getException();
-
                     }
                     return dosyaRef.getDownloadUrl();
                 }
             }).addOnCompleteListener(new OnCompleteListener<Uri>() {
                 @Override
                 public void onComplete(@NonNull Task<Uri> task) {
-                   // Log.i("a1111", "burası çalıştı");
                     if (task.isSuccessful()) {
-                        //Log.i("a1111", "İfe girdi");
-                            Uri dowloadUri = task.getResult();
-                            uri = dowloadUri.toString();
 
-                            HashMap<String, Object> kullaniciMap = new HashMap<>();
-                            kullaniciMap.put("resim", uri);
-                            kullaniciReferans.updateChildren(kullaniciMap);
-                           // Log.i("a111", "Yüklendi");
-                            alertDialog.dismiss();
-                    }
-                    else{
+                        Uri dowloadUri = task.getResult();
+                        uri = dowloadUri.toString();
+
+                        kullaniciReferans.child("resim").setValue(uri).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                alertDialog.dismiss();
+                                MainActivityGit();
+                            }
+                        });
+                    } else {
                         Log.i("Hata", "Else düştü,resim yüklenemedi");
                     }
                 }
@@ -212,7 +211,6 @@ public class ProfilDuzenleActivity extends AppCompatActivity {
         } else {
             alertDialog.dismiss();
             Log.i("Hata", "Else düştü, resim seçilemedi");
-            //Toast.makeText(this, "Resim seçilemedi", Toast.LENGTH_LONG).show();
         }
     }
 }

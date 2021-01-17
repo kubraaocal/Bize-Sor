@@ -4,19 +4,6 @@
         android:id="@+id/nav_profilim"
         android:title="Profilim"
         android:icon="@drawable/ic_profil"/>
-    <item
-        android:id="@+id/nav_bildirimler"
-        android:title="Bildirimler"
-        android:icon="@drawable/ic_bildirim"/>
-    <item
-        android:id="@+id/nav_takip_edilenler"
-        android:title="Takip Edilenler"
-        android:icon="@drawable/ic_takip"/>
-
-    <item
-        android:id="@+id/nav_ayarlar"
-        android:title="Ayarlar"
-        android:icon="@drawable/ic_cikis"/>
 
     <item
         android:id="@+id/nav_cikis"
